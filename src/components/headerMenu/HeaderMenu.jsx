@@ -14,10 +14,10 @@ const HeaderMenu = () => {
   const [expanded, setExpanded] = useState(false);
   const [cookies, setCookies] = useState(null);
 
-    useEffect(() => {
-      const storedCookies = Cookies.get("loginCookie");
-      setCookies(storedCookies);
-    }, []);
+  useEffect(() => {
+    const storedCookies = Cookies.get("TOKEN_LOGIN");
+    setCookies(storedCookies);
+  }, []);
 
   // Collect path name and show the active button
   useEffect(() => {
