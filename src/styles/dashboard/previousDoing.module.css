@@ -3,30 +3,30 @@
   position: relative;
 }
 .content {
-  min-height: 100vh;
+  min-height: 50vh;
   width: 100%;
   position: relative;
   left: 250px;
 }
-.contentContainer{
+.contentContainer {
   background-color: #fff;
   padding: 8px 12px;
   border-radius: 10px;
   margin-bottom: 15px;
 }
 
-.date{
+.date {
   display: flex;
 }
-.from{
+.from {
   width: 40%;
   margin-right: 4%;
 }
-.to{
+.to {
   width: 40%;
   margin-right: 4%;
 }
-.submit{
+.submit {
   width: 10%;
   display: flex;
   align-items: center;
@@ -37,20 +37,19 @@
     position: relative;
     left: 0px;
   }
-  .date{
+  .date {
     display: flex;
     flex-direction: column;
   }
-  .from{
+  .from {
     width: 100%;
   }
-  .to{
+  .to {
     width: 100%;
   }
-  .submit{
+  .submit {
     width: 80px;
     display: flex;
     align-items: center;
   }
 }
-

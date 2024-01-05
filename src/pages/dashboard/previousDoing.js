@@ -20,29 +20,29 @@ export default function PreviousDoing() {
   const router = useRouter();
   const cookieValue = Cookies.get("TOKEN_LOGIN");
 
-
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
- 
-
   const handlePreviousSubmit = async (data) => {
     const { fromDate, toDate } = data;
-     console.log(fromDate);
+    console.log(fromDate);
 
-     axios.get(BASE_URL + `/duclub/api/member_ledger?from=${fromDate}&to=${toDate}`,{
-      headers: {
-        duclub_token: cookieValue,
-      },
-    })
-       .then((response) => {
-           setpreData(response?.data);
-       });
-      }
+    axios
+      .get(
+        BASE_URL + `/duclub/api/member_ledger?from=${fromDate}&to=${toDate}`,
+        {
+          headers: {
+            duclub_token: cookieValue,
+          },
+        }
+      )
+      .then((response) => {
+        setpreData(response?.data);
+      });
+  };
 
   return (
     <>
@@ -70,6 +70,7 @@ export default function PreviousDoing() {
                         padding: "25px 50px",
                         borderRadius: "20px",
                       }}
+                      className="shadow-lg"
                     >
                       {/* Form header and login Form data */}
                       {/* Title */}
@@ -117,12 +118,10 @@ export default function PreviousDoing() {
                 </div>
               </Row>
             </div>
-
           </div>
         </>
-          
+
         <>
-        
           {/* Dashboard Left Side and Header */}
           <DashboardLeftSide />
 
@@ -155,10 +154,8 @@ export default function PreviousDoing() {
               </Col>
             </Row>
           </div>
-       
-      </>
-
+        </>
       </main>
     </>
   );
- }
+}

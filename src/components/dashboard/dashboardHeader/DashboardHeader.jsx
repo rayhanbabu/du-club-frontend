@@ -45,52 +45,7 @@ const DashboardHeader = ({ open, setOpen }) => {
           </div>
         </div>
         <div>
-          <Dropdown>
-            <Dropdown.Toggle
-              id="dropdown-basic"
-              className={Style.dropdown}
-              style={{
-                margin: 0,
-                padding: 0,
-                background: "transparent",
-                border: "none",
-              }}
-            >
-              {itemValue?.profile_image !== null ? (
-                <img
-                  src={baseImgUrl + itemValue?.profile_image}
-                  className={Style.dropdownImg}
-                  alt=""
-                />
-              ) : (
-                <img src="./default.png" className={Style.dropdownImg} alt="" />
-              )}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item>
-                <Link
-                  href="/dashboard/updateInfo"
-                  className="text-decoration-none text-black d-flex align-items-center"
-                >
-                  <BiSolidEditLocation className="me-1" /> Update Profile
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link
-                  href="/dashboard/changePassword"
-                  className="text-decoration-none text-black d-flex align-items-center"
-                >
-                  <RiLockPasswordFill className="me-1" /> Change Password
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={handleLogout}>
-                <span className="d-flex align-items-center">
-                  <FiLogOut className="me-1" /> Log out
-                </span>
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <p>Name</p>
         </div>
       </div>
     </div>

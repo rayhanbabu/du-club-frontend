@@ -10,6 +10,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
 import { BASE_URL } from "@/utils/api";
+import MemberSkeleton from "@/components/loader/MemberSkeleton";
 
 function getCurrentDayName() {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -21,21 +22,22 @@ function getCurrentDayName() {
 export default function Dashboard() {
   const [counters, setCounters] = useState({});
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-     
   const cookieValue = Cookies.get("TOKEN_LOGIN");
   const dayName = getCurrentDayName();
 
+  console.log(data?.data);
+
   useEffect(() => {
+    setLoading(true);
     axios
       .get(BASE_URL + `/duclub/api/product_view?dayName=${dayName}`)
       .then((response) => {
         setData(response?.data?.data);
-       
+        setLoading(false);
       });
   }, [dayName]);
-
-
 
   const increment = (id) => {
     console.log(id);
@@ -67,21 +69,22 @@ export default function Dashboard() {
       });
 
       if (result.isConfirmed) {
-        
-        if (typeof(quantity) != "undefined"){
-             quantity=quantity;
-        }else{
-               quantity=1;
+        if (typeof quantity != "undefined") {
+          quantity = quantity;
+        } else {
+          quantity = 1;
         }
-       
 
-        const response = await fetch(`${BASE_URL}/duclub/api/product_add?productID=${id}&qty=${quantity}&price=${price}`, {
-          headers: {
+        const response = await fetch(
+          `${BASE_URL}/duclub/api/product_add?productID=${id}&qty=${quantity}&price=${price}`,
+          {
+            headers: {
               "Cache-Control": "no-cache",
               duclub_token: cookieValue,
+            },
           }
-      });
-     const result = await response.json();
+        );
+        const result = await response.json();
         if (result.status === "success") {
           Swal.fire({
             title: "Order Placed!",
@@ -89,7 +92,7 @@ export default function Dashboard() {
             icon: "success",
           });
         }
-       }
+      }
     } catch (err) {
       console.log(err);
     }
@@ -108,70 +111,73 @@ export default function Dashboard() {
           <div className={`${Style.mainContainer} d-flex`}>
             {/* Dashboard Left Side and Header */}
             <DashboardLeftSide />
-
             {/* Main Content */}
             <div className={`${Style.content} px-4`}>
               <Row className="pb-4 pt-4">
                 <Col lg={10} md={8}>
-                  <Row>
-                    {data?.data?.map((item) => (
-                      <Col lg={4} md={6} sm={12} key={item.id}>
-                        <Card className="d-flex flex-row px-2 mb-4">
-                          <div className="d-flex align-items-center">
-                            <Card.Img
-                              className={Style.img}
-                              variant="top"
-                              src={`https://dhakauniversityclub.com/${item?.productImgUrl}`}
-                            />
-                          </div>
-                          <div>
-                            <Card.Body>
-                              <Card.Title className={Style.title}>
-                                {item?.productName}
-                              </Card.Title>
-                              <Card.Subtitle
-                                className="mb-3"
-                                style={{ fontSize: "15px", color: "#0B5ED7" }}
-                              >
-                                ৳ {item?.productPrice}
-                              </Card.Subtitle>
-                              <div className={Style.wrapper}>
-                                <span
-                                  className={Style.minus}
-                                  onClick={() => decrement(item.productID)}
+                  {loading ? (
+                    <MemberSkeleton />
+                  ) : (
+                    <Row>
+                      {data?.data?.map((item) => (
+                        <Col lg={4} md={6} sm={12} key={item.id}>
+                          <Card className="d-flex flex-row px-2 mb-4">
+                            <div className="d-flex align-items-center">
+                              <Card.Img
+                                className={Style.img}
+                                variant="top"
+                                src={`https://dhakauniversityclub.com/${item?.productImgUrl}`}
+                              />
+                            </div>
+                            <div>
+                              <Card.Body>
+                                <Card.Title className={Style.title}>
+                                  {item?.productName}
+                                </Card.Title>
+                                <Card.Subtitle
+                                  className="mb-3"
+                                  style={{ fontSize: "15px", color: "#0B5ED7" }}
                                 >
-                                  -
-                                </span>
-                                <span className={Style.num}>
-                                  {counters[item.productID] || 1}
-                                </span>
-                                <span
-                                  className={Style.plus}
-                                  onClick={() => increment(item.productID)}
-                                >
-                                  +
-                                </span>
-                              </div>
-                              <div className="d-flex justify-content-center">
-                                <Button
-                                  size="sm"
-                                  onClick={() =>
-                                    handleCartClick(
-                                      item.productID,
-                                      item?.productPrice,
-                                      counters[item.productID]
-                                    )
-                                  }
-                                >
-                                  Add to cart
-                                </Button>
-                              </div>
-                            </Card.Body>
-                          </div>
-                        </Card>
-                      </Col>
-                    ))}
-                  </Row>
+                                  ৳ {item?.productPrice}
+                                </Card.Subtitle>
+                                <div className={Style.wrapper}>
+                                  <span
+                                    className={Style.minus}
+                                    onClick={() => decrement(item.productID)}
+                                  >
+                                    -
+                                  </span>
+                                  <span className={Style.num}>
+                                    {counters[item.productID] || 1}
+                                  </span>
+                                  <span
+                                    className={Style.plus}
+                                    onClick={() => increment(item.productID)}
+                                  >
+                                    +
+                                  </span>
+                                </div>
+                                <div className="d-flex justify-content-center">
+                                  <Button
+                                    size="sm"
+                                    onClick={() =>
+                                      handleCartClick(
+                                        item.productID,
+                                        item?.productPrice,
+                                        counters[item.productID]
+                                      )
+                                    }
+                                  >
+                                    Add to cart
+                                  </Button>
+                                </div>
+                              </Card.Body>
+                            </div>
+                          </Card>
+                        </Col>
+                      ))}
+                    </Row>
+                  )}
                 </Col>
               </Row>
             </div>
@@ -181,4 +187,3 @@ export default function Dashboard() {
     </>
   );
 }
-

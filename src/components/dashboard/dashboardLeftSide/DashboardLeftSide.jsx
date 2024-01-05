@@ -70,18 +70,22 @@ const DashboardLeftSide = () => {
               <MdCategory className="me-1" /> Previous Doing
             </Link>
           </li>
-         
+
           <li className="">
             <Link
               href="/dashboard/pending"
               className={`${Style.link} ${
-                activeItem === "/dashboard/resign" ? Style.active : ""
+                activeItem === "/dashboard/pending" ? Style.active : ""
               } text-decoration-none px-3 py-2 d-block d-flex align-items-center`}
             >
               <CgProfile className="me-1" /> Pending Orders
             </Link>
           </li>
-          <li className={`${Style.link} px-3 py-2`} onClick={handleLogout} style={{cursor: "pointer"}}>
+          <li
+            className={`${Style.link} px-3 py-2`}
+            onClick={handleLogout}
+            style={{ cursor: "pointer" }}
+          >
             <FiLogOut className="me-1" /> Log out
           </li>
         </ul>
