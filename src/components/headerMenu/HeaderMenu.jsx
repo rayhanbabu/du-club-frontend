@@ -80,11 +80,8 @@ const HeaderMenu = () => {
                       activeItem === "/login" ? Style.active : ""
                     } ${Style.link}`}
                   >
-                    Login
+                  Member Login
                   </Link>
-                </Nav>
-                <Nav>
-                  <a href="https://dhakauniversityclub.com/">Admin Login</a>
                 </Nav>
               </>
             )}

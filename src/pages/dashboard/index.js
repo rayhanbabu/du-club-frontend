@@ -61,7 +61,7 @@ export default function Dashboard() {
       const result = await Swal.fire({
         title: "Are you sure?",
         text: "You want to place the order",
-        icon: "success",
+        icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
@@ -168,7 +168,7 @@ export default function Dashboard() {
                                       )
                                     }
                                   >
-                                    Add to cart
+                                    Placed Order
                                   </Button>
                                 </div>
                               </Card.Body>
