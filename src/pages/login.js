@@ -55,7 +55,7 @@ export default function Login() {
 
       console.log(result);
       if (result.status === "success") {
-        Cookies.set("TOKEN_LOGIN", result.duclub_token, { expires: 2 });
+        Cookies.set("TOKEN_LOGIN", result.duclub_token, { expires: 365 });
         setLoadingBtn(false);
         toast.success(result.message);
         router.push("/dashboard");
