@@ -3,7 +3,7 @@
   position: relative;
 }
 .content {
-  min-height: 50vh;
+  min-height: 100vh;
   width: 100%;
   position: relative;
   left: 250px;

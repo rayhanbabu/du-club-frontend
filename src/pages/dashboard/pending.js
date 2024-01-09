@@ -46,7 +46,7 @@ export default function PreviousDoing() {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You want to Delete This Product",
-      icon: "success",
+      icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -91,9 +91,10 @@ export default function PreviousDoing() {
 
             {/* Main Content */}
             <div className={`${Style.content} px-4`}>
-              <Row style={{ marginTop: "70px" }}>
+              <Row style={{ marginTop: "20px" }}>
                 <Col md={8} sm={12}>
                   <Col md={10} sm={12}>
+                    <TopTitle title="Pending Order" textAlign="left" />
                     <div
                       style={{
                         background: "#fff",

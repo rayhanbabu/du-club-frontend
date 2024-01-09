@@ -29,6 +29,7 @@ export default function PreviousDoing() {
   const handlePreviousSubmit = async (data) => {
     const { fromDate, toDate } = data;
     console.log(fromDate);
+    setLoadingBtn(true);
 
     axios
       .get(
@@ -41,6 +42,7 @@ export default function PreviousDoing() {
       )
       .then((response) => {
         setpreData(response?.data);
+        setLoadingBtn(false);
       });
   };
 
@@ -107,13 +109,49 @@ export default function PreviousDoing() {
 
                           {/* Submit Button */}
                           <div className={Style.submit}>
-                            <Button variant="primary" type="submit">
-                              Submit
+                            <Button
+                              variant="primary"
+                              type="submit"
+                              disabled={loadingBtn}
+                            >
+                              {loadingBtn ? "Processing...." : "Submit"}
                             </Button>
                           </div>
                         </div>
                       </Form>
                     </div>
+
+                    {/* Table */}
+                    {preData?.data?.data?.ledger?.length && (
+                      <div
+                        style={{
+                          background: "#fff",
+                          padding: "25px 50px",
+                          borderRadius: "20px",
+                          marginTop: "50px",
+                        }}
+                        className="shadow-lg"
+                      >
+                        <Table striped bordered hover>
+                          <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>Product Info</th>
+                              <th>Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {preData?.data?.data?.ledger?.map((item) => (
+                              <tr key={item.ledger_id}>
+                                <td>{item.trans_date}</td>
+                                <td>{item.view_product_info}</td>
+                                <td>{item.dr}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                      </div>
+                    )}
                   </Col>
                 </div>
               </Row>
@@ -121,11 +159,9 @@ export default function PreviousDoing() {
           </div>
         </>
 
-        <>
-          {/* Dashboard Left Side and Header */}
+        {/* <>
           <DashboardLeftSide />
 
-          {/* Main Content */}
           <div
             className={`${Style.content} px-4`}
             style={{ marginTop: "70px" }}
@@ -133,28 +169,11 @@ export default function PreviousDoing() {
             <TopTitle title="Previous Details" textAlign="left" />
             <Row>
               <Col md={8} sm={12}>
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Product Info</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {preData?.data?.data?.ledger?.map((item) => (
-                      <tr key={item.ledger_id}>
-                        <td>{item.trans_date}</td>
-                        <td>{item.view_product_info}</td>
-                        <td>{item.dr}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </Table>
+                
               </Col>
             </Row>
           </div>
-        </>
+        </> */}
       </main>
     </>
   );
