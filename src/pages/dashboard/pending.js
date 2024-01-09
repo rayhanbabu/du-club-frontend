@@ -31,7 +31,7 @@ export default function PreviousDoing() {
       .then((response) => {
         setData(response?.data);
       });
-  }, [cookieValue]);
+  }, [data]);
 
   const {
     register,
@@ -65,7 +65,7 @@ export default function PreviousDoing() {
       );
       const result1 = await response.json();
       if (result1.status === "success") {
-        setData(!data);
+        // setData(!data);
         await Swal.fire({
           title: "Product Deleted",
           text: "Product Delete successfully.",
@@ -91,7 +91,7 @@ export default function PreviousDoing() {
 
             {/* Main Content */}
             <div className={`${Style.content} px-4`}>
-              <Row style={{ marginTop: "20px" }}>
+              <Row style={{ marginTop: "10px" }}>
                 <Col md={8} sm={12}>
                   <Col md={10} sm={12}>
                     <TopTitle title="Pending Order" textAlign="left" />
@@ -102,7 +102,7 @@ export default function PreviousDoing() {
                         borderRadius: "20px",
                       }}
                     >
-                      <Table striped bordered hover>
+                      <Table striped bordered hover responsive>
                         <thead>
                           <tr>
                             <th>Date</th>
