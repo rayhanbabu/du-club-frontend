@@ -27,7 +27,7 @@ export default function Dashboard() {
   const cookieValue = Cookies.get("TOKEN_LOGIN");
   const dayName = getCurrentDayName();
 
-  console.log(data?.data);
+  //console.log(cookieValue);
 
   useEffect(() => {
     setLoading(true);
@@ -40,7 +40,7 @@ export default function Dashboard() {
   }, [dayName]);
 
   const increment = (id) => {
-    console.log(id);
+   // console.log(id);
     setCounters((prevCounters) => ({
       ...prevCounters,
       [id]: (prevCounters[id] || 0) + 1,

@@ -53,7 +53,7 @@ export default function Login() {
       const response = await fetch(`${BASE_URL}/duclub/api/VerifyLogin/${phone}/${data.code}`);
       const result = await response.json();
 
-      console.log(result);
+     // console.log(result);
       if (result.status === "success") {
         Cookies.set("TOKEN_LOGIN", result.duclub_token, { expires: 365 });
         setLoadingBtn(false);
