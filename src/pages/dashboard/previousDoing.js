@@ -49,7 +49,7 @@ export default function PreviousDoing() {
   return (
     <>
       <Head>
-        <title>DASHBOARD::Previous Doing</title>
+        <title>DASHBOARD::Previous Billing</title>
         <meta name="description" content="Dashboard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="./favicon.jpeg" />
@@ -64,8 +64,8 @@ export default function PreviousDoing() {
             <div className={`${Style.content} px-4`}>
               <Row style={{ marginTop: "60px" }}>
                 <div className="d-flex mb-2 mt-0" style={{ width: "100%" }}>
-                  <Col lg={8} md={10} sm={12}>
-                    <TopTitle title="Previous Doing" textAlign="left" />
+                  <Col lg={8} md={12} sm={12}>
+                    <TopTitle title="Previous Billing" textAlign="left" />
                     <div
                       style={{
                         background: "#fff",

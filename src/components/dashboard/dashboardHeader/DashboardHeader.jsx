@@ -15,6 +15,13 @@ import Cookies from "js-cookie";
 const DashboardHeader = ({ open, setOpen }) => {
   const [itemValue, setItemValue] = useState(null);
   const router = useRouter();
+  const [name, setName] = useState("");
+
+
+  useEffect(() => {
+     const name1 = Cookies.get("name");
+        setName(name1);
+  }, []);
 
   const handleControlSidebar = () => {
     setOpen(!open);
@@ -23,13 +30,13 @@ const DashboardHeader = ({ open, setOpen }) => {
   // Logout button
   const handleLogout = () => {
     Cookies.remove("TOKEN_LOGIN");
-    Cookies.remove("USER_ID");
-    Cookies.remove("USER_NAME");
+    Cookies.remove("card");
+    Cookies.remove("name");
     router.push("/");
   };
 
   return (
-    <div className={`${Style.dashboardHeader} pt-2`}>
+    <div className={`${Style.dashboardHeader} pt-3 px-4`}>
       <div className="d-flex justify-content-between">
         <div>
           <div className="d-flex d-block">
@@ -45,7 +52,7 @@ const DashboardHeader = ({ open, setOpen }) => {
           </div>
         </div>
         <div>
-          <p>Name</p>
+          <p >{name?name:""}</p>
         </div>
       </div>
     </div>

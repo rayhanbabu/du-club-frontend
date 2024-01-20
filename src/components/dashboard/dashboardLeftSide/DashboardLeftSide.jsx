@@ -25,6 +25,8 @@ const DashboardLeftSide = () => {
   // Logout button
   const handleLogout = () => {
     Cookies.remove("TOKEN_LOGIN");
+    Cookies.remove("card");
+    Cookies.remove("name");
     // localStorage.removeItem("user-info");
     router.push("/");
   };
