@@ -17,10 +17,9 @@ const DashboardHeader = ({ open, setOpen }) => {
   const router = useRouter();
   const [name, setName] = useState("");
 
-
   useEffect(() => {
-     const name1 = Cookies.get("name");
-        setName(name1);
+    const name1 = Cookies.get("name");
+    setName(name1);
   }, []);
 
   const handleControlSidebar = () => {
@@ -46,13 +45,50 @@ const DashboardHeader = ({ open, setOpen }) => {
             >
               <FaBars className="fs-4 ms-4" />
             </button>
-            <Link href="/" className="text-decoration-none text-black">
-              <span class="ps-3 fs-4 fw-bold">DU CLUB</span>
+
+            <Link href="/" className={`${Style.smHide} text-decoration-none sm-hide text-black`}>
+            <span class="ps-3 fs-4 fw-bold ">DU CLUB</span>
+
             </Link>
           </div>
         </div>
+
         <div>
-          <p >{name?name:""}</p>
+          <div>
+            <Dropdown>
+              <Dropdown.Toggle
+                id="dropdown-basic"
+                className={Style.dropdown}
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  background: "transparent",
+                  border: "none",
+                }}
+              >
+                <p className="fs-5 font-bold text-black">
+                  {name ? name : "User"}
+                </p>
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu style={{ marginTop: "-30px" }}>
+                <Dropdown.Item>
+                  <li
+                    href=""
+                    className="text-decoration-none text-black d-flex align-items-center"
+                  >
+                    <CgProfile className="me-1" /> Profile
+                  </li>
+                </Dropdown.Item>
+
+                <Dropdown.Item onClick={handleLogout}>
+                  <span className="d-flex align-items-center">
+                    <FiLogOut className="me-1" /> Log out
+                  </span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
         </div>
       </div>
     </div>

@@ -61,22 +61,24 @@ export default function PreviousDoing() {
             <DashboardLeftSide />
 
             {/* Main Content */}
-            <div className={`${Style.content} px-4`}>
+            <div className={`${Style.content} w-100 px-4`}>
               <Row style={{ marginTop: "60px" }}>
-                <div className="d-flex mb-2 mt-0" style={{ width: "100%" }}>
+                <div className="md:d-flex mb-2 mt-0" style={{ width: "100%" }}>
                   <Col lg={8} md={12} sm={12}>
-                    <TopTitle title="Previous Bill" textAlign="left" />
+                    {/* <TopTitle title="Previous Bill" textAlign=""  /> */}
+                    <h2 className="text-start fw-bold fs-4 mt-4">Previous Bill</h2>
                     <div
                       style={{
                         background: "#fff",
-                        padding: "25px 50px",
+                        padding: "10px 20px",
                         borderRadius: "20px",
+                        marginTop:"5px"
                       }}
                       className="shadow-lg"
                     >
                       {/* Form header and login Form data */}
                       {/* Title */}
-                      <Form onSubmit={handleSubmit(handlePreviousSubmit)}>
+                      <Form onSubmit={handleSubmit(handlePreviousSubmit)} className="w-full">
                         <div className={Style.date}>
                           <div className={Style.from}>
                             <Form.Group className="mb-3" controlId="formEmail">

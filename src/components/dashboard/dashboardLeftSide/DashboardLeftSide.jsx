@@ -23,13 +23,6 @@ const DashboardLeftSide = () => {
   }, [router]);
 
   // Logout button
-  const handleLogout = () => {
-    Cookies.remove("TOKEN_LOGIN");
-    Cookies.remove("card");
-    Cookies.remove("name");
-    // localStorage.removeItem("user-info");
-    router.push("/");
-  };
 
   return (
     <>
@@ -69,7 +62,7 @@ const DashboardLeftSide = () => {
                 activeItem === "/dashboard/previousDoing" ? Style.active : ""
               } text-decoration-none px-3 py-2 d-block d-flex align-items-center`}
             >
-              <MdCategory className="me-1" /> Previous Doing
+              <MdCategory className="me-1" /> Previous Bill
             </Link>
           </li>
 
@@ -83,13 +76,7 @@ const DashboardLeftSide = () => {
               <CgProfile className="me-1" /> Pending Orders
             </Link>
           </li>
-          {/* <li
-            className={`${Style.link} px-3 py-2`}
-            onClick={handleLogout}
-            style={{ cursor: "pointer" }}
-          >
-            <FiLogOut className="me-1" /> Log out
-          </li> */}
+         
         </ul>
       </div>
     </>

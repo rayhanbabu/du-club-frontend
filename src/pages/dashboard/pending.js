@@ -93,13 +93,15 @@ export default function PreviousDoing() {
             <div className={`${Style.content} px-4`}>
               <Row style={{ marginTop: "10px" }}>
                 <Col md={8} sm={12}>
-                  <Col md={10} sm={12}>
-                    <TopTitle title="Pending Order" textAlign="left" />
+                  <Col md={12} sm={12}>
+                    {/* <TopTitle className=" mt-5" title="" textAlign="" /> */}
+                    <h2 className="text-start fw-bold fs-4 mt-4">Pending Order</h2>
                     <div
                       style={{
                         background: "#fff",
-                        padding: "25px 50px",
+                        padding: "10px 15px",
                         borderRadius: "20px",
+                        marginTop:"2px"
                       }}
                     >
                       <Table striped bordered hover responsive>
@@ -128,7 +130,7 @@ export default function PreviousDoing() {
                                 }
                               </td>
                               <td>
-                                {item.products.map((product) => (
+                                {item?.products?.map((product) => (
                                   <Table
                                     striped
                                     bordered

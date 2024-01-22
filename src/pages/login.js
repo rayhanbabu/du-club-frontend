@@ -48,6 +48,7 @@ export default function Login() {
   };
  
   const handleCodeSubmit = async (data) => {
+    console.log(data.code)
     try {
       setLoadingBtn(true);
       const response = await fetch(`${BASE_URL}/duclub/api/VerifyLogin/${phone}/${data.code}`);

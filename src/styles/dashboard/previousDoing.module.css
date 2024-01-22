@@ -10,9 +10,10 @@
 }
 .contentContainer {
   background-color: #fff;
-  padding: 8px 12px;
+  padding: 4px 5px;
   border-radius: 10px;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .date {
