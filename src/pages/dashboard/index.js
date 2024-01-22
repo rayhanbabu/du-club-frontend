@@ -65,7 +65,7 @@ export default function Dashboard() {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Placed!",
+        confirmButtonText: "Yes, Place!",
       });
 
       if (result.isConfirmed) {
@@ -101,10 +101,10 @@ export default function Dashboard() {
   return (
     <>
       <Head>
-        <title>DASHBOARD::</title>
+        <title>DASHBOARD::Dhaka University Club</title>
         <meta name="description" content="Dashboard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="./favicon.jpeg" />
+        <link rel="icon" href="./favicon.png" />
       </Head>
       <main>
         <>
@@ -168,7 +168,7 @@ export default function Dashboard() {
                                       )
                                     }
                                   >
-                                    Placed Order
+                                    Place Order
                                   </Button>
                                 </div>
                               </Card.Body>

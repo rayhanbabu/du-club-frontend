@@ -78,10 +78,10 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>LOGIN::</title>
+        <title>LOGIN::Dhaka University Club</title>
         <meta name="description" content="{data?.admin?.nameen}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.jpeg" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main className={Style.login}>
         <Container>

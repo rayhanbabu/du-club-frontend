@@ -83,13 +83,13 @@ const DashboardLeftSide = () => {
               <CgProfile className="me-1" /> Pending Orders
             </Link>
           </li>
-          <li
+          {/* <li
             className={`${Style.link} px-3 py-2`}
             onClick={handleLogout}
             style={{ cursor: "pointer" }}
           >
             <FiLogOut className="me-1" /> Log out
-          </li>
+          </li> */}
         </ul>
       </div>
     </>

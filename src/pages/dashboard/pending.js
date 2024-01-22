@@ -50,7 +50,7 @@ export default function PreviousDoing() {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Deleted!",
+      confirmButtonText: "Yes, Delete!",
     });
 
     if (result.isConfirmed) {
@@ -81,7 +81,7 @@ export default function PreviousDoing() {
         <title>DASHBOARD::Previous Doing</title>
         <meta name="description" content="Dashboard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="./favicon.jpeg" />
+        <link rel="icon" href="./favicon.png" />
       </Head>
       <main>
         <>
@@ -123,7 +123,7 @@ export default function PreviousDoing() {
                                     size="sm"
                                     onClick={() => handleCancel(item?.saleID)}
                                   >
-                                    Cancel
+                                    Delete
                                   </Button>
                                 }
                               </td>
