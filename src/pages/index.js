@@ -2,9 +2,57 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Style from '@/styles/Home.module.css'
 import { Container, Row, Col } from 'react-bootstrap'
+import Cookies from "js-cookie";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { BASE_URL } from '@/utils/api';
+import MemberSkeleton from '@/components/loader/MemberSkeleton';
+import HomeSkeleton from '@/components/loader/HomeSkeleton';
 
 
-export default function Home() {
+ 
+// async function getData () {
+//   let res = await axios.get(BASE_URL + '/duclub/api/homepage')
+//   let data = await res.json()
+//   console.log(data)
+//   return data
+//  }
+
+
+  
+
+export default function  Home() {
+  const [data, setData] = useState('')
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+ 
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true); // Set loading to true before fetching
+  
+        const response = await axios.get(BASE_URL + `/duclub/api/homepage`);
+        console.log(response.data)
+  
+        // Assuming the response.data has a property named 'room'
+        setData(response?.data?.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Set loading to false after fetching, whether successful or not
+      }
+    };
+  
+    fetchData();
+  }, []);
+
+
+
+
+
   return (
     <>
       <Head>
@@ -14,11 +62,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className={`${Style.home} pt-5`}>
-        <Container>
+        
+
+        {
+          loading ? (
+            <HomeSkeleton></HomeSkeleton>
+          ) :
+          (
+            <Container>
           <Row>
             <Col md={5} sm={12} className="mx-auto">
               <div className="d-flex">
-                <Image src="/du_logo.png" width={150} height={150} alt="du logo" />
+                <Image src="/favicon.png" width={150} height={150} alt="du logo" />
                 <div className="d-flex flex-column justify-content-center ms-2">
                   <h3>Dhaka University Club</h3>
                   <h3>ঢাকা বিশ্ববিদ্যালয় ক্লাব</h3>
@@ -26,17 +81,20 @@ export default function Home() {
               </div>
             </Col>
             <Col md={12} className="mt-4">
-              <h5 className={Style.title}> ঢাকা বিশ্ববিদ্যালয় ক্লাব-সংগ্রাম, ঐতিহ্য, সংস্কৃতি ও বিনোদনের প্রাণকেন্দ্র</h5>
-              <p className={Style.des}> 
-                  সমগ্র বিশ্বের  প্রতিটি রাষ্ট্রেই সময়ের চাহিদা পরিপূরণে জ্ঞান ও প্রজ্ঞার সৃজন ও বিতরনের জন্য রয়েছে উচ্চশিক্ষা প্রতিষ্ঠান তথা বিশ্ববিদ্যালয় । পৃথিবীর বিভিন্ন রাষ্ট্রে অনেক নামিদামি বিশ্ববিদ্যালয় প্রতিষ্ঠিত হয়েছে; কিন্তু আমাদের এমন একটি বিশ্ববিদ্যালয় প্রতিষ্ঠিত হয়েছে যা পৃথিবীর মানচিত্রে একটি স্বাধীন-সার্বভৌম জাতিরাষ্ট্রের জন্ম দিয়েছে । আমরা কেউ তাকে প্রাচ্যের অক্সর্ফোড বলি আবার কেউ নানা প্রশংসাবাণীতে একে সিক্ত করি । বস্তুত এ সবই তার পাওনা । কিন্ত একটি আত্মমর্যাদাশীল জাতি গঠনে, পরাধীনতার নাগপাশ ছিন্ন করে স্বাধীনতা অর্জনে এবং হাজার বছরের প্রতীক্ষিত বাংলাদেশ বিনির্মাণে এ বিশ্ববিদ্যালয়ের যে দীর্ঘ সংগ্রামী ঐতিহ্য রয়েছে সম্ভবত এ মহত্তম গুণের কারণে এটি গোটা বিশ্বে অনন্য ও অদ্বিতীয় আসনে সমাসীন । বিশ্বমানচিত্রে স্বাধীন বাংলাদেশের অভ্যুদয়ে যার ভূমিকা অপরিসীম- কৃতজ্ঞ বাঙালি তাকে মহান মুক্তিযুদ্ধের সূতিকাগার হিসাবে স্বাতন্ত্র্য মর্যাদায় অভিষিক্ত করেছেন । বাঙালি জাতির গর্ব-অহঙ্কারের প্রতীক উচ্চশিক্ষার সেই সর্বোচ্চ প্রতিষ্ঠানটি হল ঢাকা বিশ্ববিদ্যালয় ।
+              <h5 className={Style.title}>{data?.desig}</h5>
+
+              {/* <p className={Style.des}> 
+                 {data?.text}
               </p>
-              <br />
-              <p className={Style.des}>
-              ঢাকা বিশ্ববিদ্যালয়ের গৌরবোজ্জ্বল ইতিহাসের সঙ্গে ওতপ্রোতভাবে জড়িয়ে আছে ঢাকা বিশ্ববিদ্যালয় ক্লাব । বিশ্ববিদ্যালয় পরিবারের ঐতিহ্য, সংস্কৃতি ও বিনোদনের প্রাণকেন্দ্র হল এ ক্লাব । বিশ্ববিদ্যালয়ের একাডেমিক ও প্রশাসনিক যাত্রার সাথে সাথেই ক্লাবের ও গোড়াপত্তন হয়েছিল; তবে শুরুর দিকে তা ছিল খুবই ছোট্ট পরিসরে কার্জন হলের এক নিভৃত কোণে । সময়ের বিবর্তনে ও পরিবর্তিত পরিস্থিতির তাগিদে তা বিশ্ববিদ্যালয়ের পুরনো কলাভবনের (বর্তমান ঢাকা মেডিকেল কলেজের জরুরি বিভাগ ভবন) দ্বিতীয় তলা, অতঃপর মল চত্বরের অধুনালুপ্ত লাল ভবনের দোতলায় এবং সবশেষে বর্তমান স্থানে স্থায়ীভাবে ক্লাব স্থানান্তরিত হয় । বর্তমান ক্লাব ভবনটি তার অপরুপ নির্মাণশৈলীর পাশাপাশি এটি বিন্যাসে অনন্য এবং বিস্তৃতিতে অতুলনীয় এক বৈশিষ্ট্যের অধিকারী । একইসাথে ইতিহাসের দীর্ঘ পরিক্রমায় মেধা-মনন ও প্রজ্ঞায় ধন্য এবং বাঙালির কিংবদন্তিতুল্য বহু মনীষী অজস্র স্মৃতিকে ধারণ করে এ ক্লাব নিজেকে আরো অনেক বেশি বৈশিষ্ট্যমন্ডিত ও মহিমান্বিত করেছে।
-                </p>
+              <br /> */}
+
+              <p dangerouslySetInnerHTML={{ __html: data?.text}} />
+              
             </Col>
           </Row>
         </Container>
+          )
+        }
       </main>
     </>
   )
