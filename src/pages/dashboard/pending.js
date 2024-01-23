@@ -45,7 +45,7 @@ export default function PreviousDoing() {
 
     const result = await Swal.fire({
       title: "Are you sure?",
-      text: "You want to Delete This Product",
+      text: "Do you want to delete this Order",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -67,8 +67,8 @@ export default function PreviousDoing() {
       if (result1.status === "success") {
         // setData(!data);
         await Swal.fire({
-          title: "Product Deleted",
-          text: "Product Delete successfully.",
+          title: "Deleted",
+          text: "Order Deleted successfully.",
           icon: "success",
         });
       }
@@ -78,7 +78,7 @@ export default function PreviousDoing() {
   return (
     <>
       <Head>
-        <title>DASHBOARD::Previous Doing</title>
+        <title>DASHBOARD::Previous Orders</title>
         <meta name="description" content="Dashboard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="./favicon.png" />

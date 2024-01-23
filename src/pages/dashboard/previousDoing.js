@@ -66,7 +66,7 @@ export default function PreviousDoing() {
                 <div className="md:d-flex mb-2 mt-0" style={{ width: "100%" }}>
                   <Col lg={8} md={12} sm={12}>
                     {/* <TopTitle title="Previous Bill" textAlign=""  /> */}
-                    <h2 className="text-start fw-bold fs-4 mt-4">Previous Bill</h2>
+                    <h2 className="text-start fw-bold fs-4 mt-4">Previous Orders History</h2>
                     <div
                       style={{
                         background: "#fff",

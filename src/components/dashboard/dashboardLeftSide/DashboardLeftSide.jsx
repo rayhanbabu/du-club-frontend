@@ -62,7 +62,7 @@ const DashboardLeftSide = () => {
                 activeItem === "/dashboard/previousDoing" ? Style.active : ""
               } text-decoration-none px-3 py-2 d-block d-flex align-items-center`}
             >
-              <MdCategory className="me-1" /> Previous Bill
+              <MdCategory className="me-1" /> Previous Orders
             </Link>
           </li>
 
